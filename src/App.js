@@ -1,11 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
-import { SpeedInsights } from "@vercel/speed-insights/react";
 
 function App() {
   return (
     <div className="App">
-      <SpeedInsights/>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p> 
