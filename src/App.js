@@ -84,8 +84,8 @@ const App = () => {
   );
   return (
     <div className="App">
-      <CurvedText text={"Name : Amos Goh En Jie"} size={100} curvature={0.5} axis="Y" spacingFactor={0.2} lineHeight={1.8}  additional_class="title"/>
-      <CurvedText text={textContent} size={30} curvature={0.3} axis="Y" spacingFactor={0.2} lineHeight={1.8} additional_class="normal"/>
+      <CurvedText text={"Name : Amos Goh En Jie"} size={100} curvature={0.3} axis="Y" spacingFactor={0.2} lineHeight={1.8}  additional_class="title"/>
+      <CurvedText text={textContent} size={20} curvature={0.8} axis="Y" spacingFactor={0} lineHeight={1.8} additional_class="normal"/>
     </div>
   );
 };
