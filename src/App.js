@@ -5,12 +5,11 @@ import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry";
 import './App.css';
 
 
-function fixed_canvas(){
-  const canvas = document.getElementsByTagName("canvas");
-  ctx = this.canvas.getContext('2d');
-  console.log(ctx.style)
+function scroll_canvas(scrollY){
+  const content = document.querySelector(".content-wrapper");
+  content.style.top =`${scrollY}px`;
 }
-fixed_canvas();
+
 const CurvedText = ({ text, size = 1, color = 0x00ff00, curveIntensity = -0.04, position = { x: 0, y: 0, z: 0 }, scene, camera, renderer }) => {
   useEffect(() => {
     if (!scene || !camera || !renderer) return;
@@ -63,16 +62,18 @@ const CurvedText = ({ text, size = 1, color = 0x00ff00, curveIntensity = -0.04, 
   return null; // No need to render anything here, everything happens in the scene
 };
 
-const App = () => {
+
+
+const App  = () => {
   const mountRef = useRef(null);
   const [textContent, setTextContent] = useState([
-    { text: "TITLE", size: 2, color: 0x00ff00, curveIntensity: -0.02 },
+    { text: "Name : Amos Goh En Jie", size: 2, color: 0x00ff00, curveIntensity: -0.001 },
     { text: "part 5 of the text or whatever", size: 1, color: 0x00ff00, curveIntensity: -0.01 },
     { text: "part 4 of the text or whatever", size: 1, color: 0x00ff00, curveIntensity: -0.02 },
     { text: "part 3 of the text or whatever", size: 1, color: 0x00ff00, curveIntensity: -0.03 },
     { text: "part 2 of the text or whatever", size: 1, color: 0x00ff00, curveIntensity: -0.04 },
     { text: "subtitle and it's contents", size: 1, color: 0x00ff00, curveIntensity: -0.05 },
-    { text: "TITLE", size: 2, color: 0x00ff00, curveIntensity: -0.04 },
+    { text: "Name : Amos Goh En Jie", size: 2, color: 0x00ff00, curveIntensity: -0.04 },
   ]);
   const [positions, setPositions] = useState([]);
 
@@ -153,6 +154,7 @@ const App = () => {
     const handleScroll = () => {
       console.log("scroll")
       const scrollY = window.scrollY;
+      scroll_canvas(scrollY);
       camera.position.y = -(scrollY/10); // Adjust the divisor to control scroll speed
     };
 
@@ -172,7 +174,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <div className="content-wrapper" ref={mountRef}>
+      <div className="content-wrapper scanlines" ref={mountRef}>
         {positions.map((position, index) => {
           const item = textContent[index];
           return (
