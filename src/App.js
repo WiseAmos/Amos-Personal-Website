@@ -1,200 +1,93 @@
-import React, { useEffect, useRef, useState } from "react";
-import * as THREE from "three";
-import { FontLoader } from "three/examples/jsm/loaders/FontLoader";
-import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry";
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
+const CurvedText = ({ text, size = 20, curvature = 20, axis = 'Y', spacingFactor = 0.5, lineHeight = 1.5, additional_class=""}) => {
+  const words = text.split(' ');
+  const [lines, setLines] = useState([]);
+  const [radius, setRadius] = useState(150);
 
-function scroll_canvas(scrollY){
-  const content = document.querySelector(".content-wrapper");
-  content.style.top =`${scrollY}px`;
-}
-
-const CurvedText = ({ text, size = 1, color = 0x00ff00, curveIntensity = -0.04, position = { x: 0, y: 0, z: 0 }, scene, camera, renderer }) => {
   useEffect(() => {
-    if (!scene || !camera || !renderer) return;
+    const updateRadius = () => {
+      const viewportWidth = window.innerWidth;
+      setRadius(viewportWidth / 5); // Adjust the radius dynamically based on the viewport width
+    };
 
-    // Load the font
-    const fontLoader = new FontLoader();
-    fontLoader.load(`${process.env.PUBLIC_URL}/fonts/VT323.json`, (font) => {
-      // Create text geometry
-      const textGeometry = new TextGeometry(text, {
-        font: font,
-        size: size,
-        height: 0.5,
-        curveSegments: 20,
-      });
+    updateRadius();
+    window.addEventListener('resize', updateRadius);
+    return () => window.removeEventListener('resize', updateRadius);
+  }, []);
 
-      // Bend text along a curve
-      const positionAttr = textGeometry.attributes.position;
-      const numVertices = positionAttr.count;
+  useEffect(() => {
+    const viewportWidth = window.innerWidth;
+    const maxCharsPerLine = Math.floor(viewportWidth / (size * 0.6)); // Allow more characters on larger screens
+    const newLines = [];
+    let currentLine = '';
 
-      // Calculate the center of the text's bounding box
-      textGeometry.computeBoundingBox();
-      const boundingBox = textGeometry.boundingBox;
-      const centerX = (boundingBox.max.x + boundingBox.min.x) / 2;
-
-      for (let i = 0; i < numVertices; i++) {
-        const x = positionAttr.getX(i);
-
-        // Parabolic curve formula: Adjust 'a' to control curvature intensity
-        const z = curveIntensity * Math.pow(x - centerX, 2);
-        positionAttr.setZ(i, z);
+    words.forEach((word) => {
+      if ((currentLine + word).length > maxCharsPerLine) {
+        newLines.push(currentLine.trim());
+        currentLine = '';
       }
-
-      // Create material and mesh
-      const material = new THREE.MeshStandardMaterial({ color: color });
-      const textMesh = new THREE.Mesh(textGeometry, material);
-
-      // Set custom position
-      textMesh.position.set(position.x, position.y, position.z);
-      scene.add(textMesh);
-
-      // Animation loop
-      const animate = () => {
-        requestAnimationFrame(animate);
-        renderer.render(scene, camera);
-      };
-      animate();
+      currentLine += `${word} `;
     });
-  }, [text, size, color, curveIntensity, position, scene, camera, renderer]);
 
-  return null; // No need to render anything here, everything happens in the scene
+    if (currentLine.trim()) newLines.push(currentLine.trim());
+    setLines(newLines);
+  }, [text, size]);
+  return (
+    <div className = {`curved-text-container ${additional_class}`}>
+      {lines.map((line, lineIndex) => (
+        <div
+          key={lineIndex}
+          className="curved-line"
+          style={{
+            marginBottom: `${lineHeight}em`, // Control spacing between lines
+          }}
+        >
+          {line.split('').map((letter, index) => {
+            const angle = curvature * (index - line.length / 2);
+            const xPos = Math.sin(angle * Math.PI / 180) * radius;
+            const zPos = Math.cos(angle * Math.PI / 180) * radius;
+
+            const nextAngle = curvature * (index + 1 - line.length / 2);
+            const arcLength = radius * Math.abs((nextAngle - angle) * Math.PI / 180);
+
+            return (
+              <span
+                key={index}
+                className="curved-text-letter"
+                style={{
+                  transform: axis === 'Y'
+                    ? `rotateY(${angle}deg) translateX(${xPos}px) translateZ(${zPos}px)`
+                    : `rotateX(${angle}deg) translateY(${xPos}px) translateZ(${zPos}px)`,
+                  fontSize: `${size}px`,
+                  marginRight: `${(arcLength * spacingFactor) / 2}px`,
+                  transformOrigin: 'center',
+                }}
+              >
+                {letter}
+              </span>
+            );
+          })}
+        </div>
+      ))}
+    </div>
+  );
 };
 
 
 
-const App  = () => {
-  const mountRef = useRef(null);
-  const [textContent, setTextContent] = useState([
-    { text: "Name : Amos Goh En Jie", size: 2, color: 0x00ff00, curveIntensity: -0.001 },
-    { text: "part 5 of the text or whatever", size: 1, color: 0x00ff00, curveIntensity: -0.01 },
-    { text: "part 4 of the text or whatever", size: 1, color: 0x00ff00, curveIntensity: -0.02 },
-    { text: "part 3 of the text or whatever", size: 1, color: 0x00ff00, curveIntensity: -0.03 },
-    { text: "part 2 of the text or whatever", size: 1, color: 0x00ff00, curveIntensity: -0.04 },
-    { text: "subtitle and it's contents", size: 1, color: 0x00ff00, curveIntensity: -0.05 },
-    { text: "Name : Amos Goh En Jie", size: 2, color: 0x00ff00, curveIntensity: -0.04 },
-  ]);
-  const [positions, setPositions] = useState([]);
 
-  // Create scene, camera, and renderer once
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(
-    75,
-    window.innerWidth / window.innerHeight,
-    0.1,
-    1000
+const App = () => {
+  const [textContent, setTextContent] = useState(
+    'This is an example paragraph to demonstrate responsive curved text wrapping dynamically based on the viewport size. '
   );
-  const renderer = new THREE.WebGLRenderer();
-
-  // Ensure the mountRef element exists before appending the renderer
-  useEffect(() => {
-    if (mountRef.current) {
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      mountRef.current.appendChild(renderer.domElement);
-    }
-
-    // Cleanup renderer when the component is unmounted
-    return () => {
-      if (mountRef.current) {
-        mountRef.current.removeChild(renderer.domElement);
-      }
-    };
-  }, [renderer]);
-
-  // Set camera position
-  camera.position.set(0, 0, 20);
-
-  // Add ambient light
-  const ambientLight = new THREE.AmbientLight(0xffffff);
-  scene.add(ambientLight);
-
-  // Calculate Y offset to stack text vertically
-  const calculateYOffset = (index, size) => {
-    const spaceBetween = 2; // Space between texts (can be adjusted)
-    const totalHeight = size + spaceBetween;
-    return -(index * totalHeight); // Shift each text down by its height
-  };
-
-  // Calculate X offset to center the text
-  const calculatePosition = (index, size, text, font) => {
-    // Create bounding box to calculate text width
-    const boundingBox = new THREE.Box3(); // Bounding box for text width
-
-    const textGeometry = new TextGeometry(text, {
-      font: font,
-      size: size,
-      height: 0.5,
-      curveSegments: 20,
-    });
-
-    textGeometry.computeBoundingBox();
-    boundingBox.copy(textGeometry.boundingBox);
-
-    // Calculate offset for center
-    const offsetX = -(boundingBox.max.x + boundingBox.min.x) / 2;
-    const offsetY = calculateYOffset(index, size);
-
-    return { x: offsetX, y: offsetY, z: 0 };
-  };
-
-  // When font is loaded, calculate all positions
-  useEffect(() => {
-    const fontLoader = new FontLoader();
-    fontLoader.load(`${process.env.PUBLIC_URL}/fonts/VT323.json`, (font) => {
-      const newPositions = textContent.map((item, index) => {
-        return calculatePosition(index, item.size, item.text, font);
-      });
-      setPositions(newPositions);
-    });
-  }, [textContent]);
-
-  // Scroll handling to simulate vertical movement
-  useEffect(() => {
-    const handleScroll = () => {
-      console.log("scroll")
-      const scrollY = window.scrollY;
-      scroll_canvas(scrollY);
-      camera.position.y = -(scrollY/10); // Adjust the divisor to control scroll speed
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [camera]);
-
-  // Animation loop
-  const animate = () => {
-    requestAnimationFrame(animate);
-    renderer.render(scene, camera);
-  };
-  animate();
-
   return (
     <div className="App">
-      <div className="content-wrapper scanlines" ref={mountRef}>
-        {positions.map((position, index) => {
-          const item = textContent[index];
-          return (
-            <CurvedText
-              key={index}
-              text={item.text}
-              size={item.size}
-              color={item.color}
-              curveIntensity={item.curveIntensity}
-              position={position}
-              scene={scene}
-              camera={camera}
-              renderer={renderer}
-            />
-          );
-        })}
-      </div>
+      <CurvedText text={"Name : Amos Goh En Jie"} size={100} curvature={0.5} axis="Y" spacingFactor={0.2} lineHeight={1.8}  additional_class="title"/>
+      <CurvedText text={textContent} size={30} curvature={0.3} axis="Y" spacingFactor={0.2} lineHeight={1.8} additional_class="normal"/>
     </div>
   );
-  
 };
 
 export default App;
