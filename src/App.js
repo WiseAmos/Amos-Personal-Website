@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
-const CurvedText = ({ text, size = 20, curvature = 20, axis = 'Y', spacingFactor = 0.5, lineHeight = 1.5, additional_class=""}) => {
+const CurvedText = ({ text, curvature = 20, axis = 'Y', spacingFactor = 0.5, lineHeight = 1.5, additional_class = "", fontSize }) => {
   const words = text.split(' ');
   const [lines, setLines] = useState([]);
   const [radius, setRadius] = useState(150);
@@ -19,7 +19,7 @@ const CurvedText = ({ text, size = 20, curvature = 20, axis = 'Y', spacingFactor
 
   useEffect(() => {
     const viewportWidth = window.innerWidth;
-    const maxCharsPerLine = Math.floor(viewportWidth / (size * 0.6)); // Allow more characters on larger screens
+    const maxCharsPerLine = Math.floor(viewportWidth / (fontSize * 0.6)); // Allow more characters on larger screens
     const newLines = [];
     let currentLine = '';
 
@@ -33,9 +33,10 @@ const CurvedText = ({ text, size = 20, curvature = 20, axis = 'Y', spacingFactor
 
     if (currentLine.trim()) newLines.push(currentLine.trim());
     setLines(newLines);
-  }, [text, size]);
+  }, [text, fontSize]);
+
   return (
-    <div className = {`curved-text-container ${additional_class}`}>
+    <div className={`curved-text-container ${additional_class}`}>
       {lines.map((line, lineIndex) => (
         <div
           key={lineIndex}
@@ -60,7 +61,7 @@ const CurvedText = ({ text, size = 20, curvature = 20, axis = 'Y', spacingFactor
                   transform: axis === 'Y'
                     ? `rotateY(${angle}deg) translateX(${xPos}px) translateZ(${zPos}px)`
                     : `rotateX(${angle}deg) translateY(${xPos}px) translateZ(${zPos}px)`,
-                  fontSize: `${size}px`,
+                  fontSize: `${fontSize}px`, // Use dynamic font size
                   marginRight: `${(arcLength * spacingFactor) / 2}px`,
                   transformOrigin: 'center',
                 }}
@@ -75,17 +76,41 @@ const CurvedText = ({ text, size = 20, curvature = 20, axis = 'Y', spacingFactor
   );
 };
 
-
-
-
 const App = () => {
   const [textContent, setTextContent] = useState(
-    'This is an example paragraph to demonstrate responsive curved text wrapping dynamically based on the viewport size. '
+    "This website is under progress! Stay tune to see Amos' Portfolio Website!"
   );
+
+  const [fontSize, setFontSize] = useState(100); // Set initial font size
+
+  useEffect(() => {
+    const updateFontSize = () => {
+      // Dynamically adjust font size based on window width
+      if (window.innerWidth <= 768) {
+        setFontSize(40); // Set smaller font size for mobile screens
+      } else {
+        setFontSize(100); // Set larger font size for larger screens
+      }
+    };
+
+    updateFontSize();
+    window.addEventListener('resize', updateFontSize);
+    return () => window.removeEventListener('resize', updateFontSize);
+  }, []); // Only run on mount and unmount
+
   return (
     <div className="App">
-      <CurvedText text={"Name : Amos Goh En Jie"} size={100} curvature={0.3} axis="Y" spacingFactor={0.2} lineHeight={1.8}  additional_class="title"/>
-      <CurvedText text={textContent} size={20} curvature={0.8} axis="Y" spacingFactor={0} lineHeight={1.8} additional_class="normal"/>
+      <div className='subtitle-wrapper'>
+      <CurvedText 
+        text={textContent} 
+        curvature={0.8} 
+        axis="Y" 
+        spacingFactor={0} 
+        lineHeight={1.8} 
+        additional_class="normal"
+        fontSize={70} // Pass the font size dynamically
+      />
+      </div>
     </div>
   );
 };
