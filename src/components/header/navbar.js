@@ -5,17 +5,17 @@ import './navbar.css';
 function project_button(){
   setTimeout(() => {
     window.location.href = "projects"
-  }, 500);
+  }, 400);
 }
 function resume_button(){
   setTimeout(() => {
     window.location.href = "resume"
-  }, 500);
+  }, 400);
 }
 function contact_button(){
   setTimeout(() => {
     window.location.href = "contact"
-  }, 500);
+  }, 400);
 }
 
 const Navbar = ({class1,class2,class3}) => {

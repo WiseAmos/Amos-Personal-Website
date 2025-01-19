@@ -27,21 +27,21 @@ function spam(n){
 
 function Loading(show){
     useEffect(() => {
-        if(sessionStorage.getItem("went-through-animation")=="false"){
-            if (window.innerWidth<600){
-                spam(20);
-            }
-            else{
-                spam(50);
-            }
-        }
-        else{
+        if(sessionStorage.getItem("went-through-animation")=="true"){
             var alert = document.getElementsByClassName('alert-box')[0];
             var done = document.getElementsByClassName("loading-wrapper")[0];
             alert.style.display = 'none';
             setTimeout(() => {
                 done.style.display = 'none';
             }, 200);
+        }
+        else{
+            if (window.innerWidth<600){
+                spam(20);
+            }
+            else{
+                spam(50);
+            }
         }
       }, []);
     return(
