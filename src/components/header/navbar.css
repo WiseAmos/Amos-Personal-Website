@@ -1,0 +1,68 @@
+.navbar {
+    color: rgb(0, 0, 0);
+    transition: background-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  button{
+    font-size: 40px;
+    width: fit-content;
+    /* transition: all 0.5s ease; */
+  }
+
+  .magic-button-1, .magic-button-2,.magic-button-3{
+    border: none;
+    background: none;
+    font-family: "VT323", serif;
+    font-weight: 400;
+    font-style: normal;
+    animation: pop 0.3s ease 1;
+    transition: all 0.3s ease;
+  }
+  .magic-button-1:hover, .magic-button-2:hover, .magic-button-3:hover{
+    border: none;
+    background: none;
+    font-family: "VT323", serif;
+    font-weight: 900;
+    font-size: 55px;
+    font-style: normal;
+    animation: pop 0.3s ease 1;
+  }
+
+  @keyframes pop {
+    0%{
+        scale: 1;
+    }
+    70%{
+        scale: 1.1;
+    }
+    100%{
+        scale: 1
+    }
+  }
+/* 
+  @media only screen and (max-width: 600px) {
+  .navbar {
+    top: 0;
+    left: 0;
+    color: rgb(0, 0, 0);
+    transition: background-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    transform: translate(0%,-50%);
+    position: absolute;
+    top: 50%;
+    left: 10%;  
+    gap: 20px;
+  }
+
+}
+   */
+@media only screen and (max-width: 600px) {
+  .navbar{
+    align-items: center;
+  }
+  
+}
