@@ -78,7 +78,7 @@ const App = () => {
     nav.style.class = 'nav-magic';
     });
     useEffect(() => {
-    if (sessionStorage.getItem("went-through-animation")=="true"){
+    if (sessionStorage.getItem("went-through-animation")==="true"){
       var wonder_button = document.getElementsByClassName("wonders")[0];
       wonder_button.style.display = "none";
       wonder(setClass1,setClass2,setClass3,setLargerwrapperclass,setTitleclass,setProfileclass);
@@ -135,7 +135,11 @@ const App = () => {
         <span style={{"--i":79}}></span>
         <span style={{"--i":125}}></span>
       </div> */}
-      <button className='wonders' onClick={()=>{wonder(setClass1,setClass2,setClass3,setLargerwrapperclass,setTitleclass,setProfileclass)}}>Unleash the Potential!</button>
+      {/* <div>
+        <img className='arrow-right' src='pictures/arrow-right.png'/>
+        <img className='arrow-left' src='pictures/arrow-right.png'/>
+      </div> */}
+      <button className='wonders' onClick={()=>{wonder(setClass1,setClass2,setClass3,setLargerwrapperclass,setTitleclass,setProfileclass)}}>Click me to unleash the potential!</button>
       <div className= {'larger-wrapper'+ largerwrapperclass}>
         <h1 className={'title'+titleclass}>Amos Goh's Portfolio</h1>
         <Navbar class1={class1} class2={class2} class3={class3}/>

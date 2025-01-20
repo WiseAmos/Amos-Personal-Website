@@ -10,7 +10,9 @@
     font-size: 40px;
     width: fit-content;
     /* transition: all 0.5s ease; */
+    cursor: pointer;
   }
+
 
   .magic-button-1, .magic-button-2,.magic-button-3{
     border: none;

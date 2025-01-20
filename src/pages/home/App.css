@@ -7,6 +7,22 @@ body, html {
   background-color: rgb(255, 255, 255);
 }
 
+/* .arrow-right{
+  position: relative;
+  left: 90%;
+  transform: translate(-100%);
+  top:100px;
+
+}
+
+.arrow-left{
+  position: relative;
+  left: 0%;
+  transform: scaleX(-1);
+  top:100px;
+
+} */
+
 body::before{
   content: "";
   width: 10px;
@@ -96,7 +112,7 @@ pre{
   animation: modified-pop 2s ease forwards;
 }
 .wonders{
-  background-color: rgb(255, 0, 0);
+    background-color: rgb(39, 167, 7);
     height: 90px;
     color: white;
     box-shadow: 5px 5px black;
@@ -109,6 +125,10 @@ pre{
     z-index: 2;
     left: 50%;
     position: absolute;
+}
+
+.wonders:hover{
+  background-color: rgb(46, 100, 2);
 }
 .title-magic{
   font-family: "VT323", serif;
@@ -172,7 +192,7 @@ pre{
     display: none;
   }
   .wonders{
-    background-color: rgb(255, 0, 0);
+    background-color: rgb(39, 167, 7);
     height: 90px;
     color: white;
     box-shadow: 5px 5px black;
