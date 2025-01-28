@@ -1,11 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import './navbar.css';
 
+function transition(title){
+  var cover = document.getElementsByClassName("cover")[0]
+  cover.classList.add("slide-down");
+  var text = cover.getElementsByTagName("h1")[0]
+  console.log(text)
+  text.textContent = title;
+}
+
 
 function project_button(){
   if (sessionStorage.getItem("went-through-animation")==="true"){
   setTimeout(() => {
-    window.location.href = "projects"
+    transition("");
+    setTimeout(() => {
+      window.location.href = "projects"
+    }, 500);
   }, 400);
 }
 }

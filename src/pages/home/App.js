@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import Navbar from '../../components/header/navbar.js'
+import Slideup from '../../components/loading/slide-down.js';
 
 function donuts(){
   const pre = document.createElement("pre");
@@ -88,6 +89,7 @@ const App = () => {
 
   return (
     <div id="contianer">
+      <Slideup title={"Projects"}/>
       {/* <div className='bubbles'>
         <span style={{"--i":4}}></span>
         <span style={{"--i":125}}></span>
@@ -139,7 +141,7 @@ const App = () => {
         <img className='arrow-right' src='pictures/arrow-right.png'/>
         <img className='arrow-left' src='pictures/arrow-right.png'/>
       </div> */}
-      <button className='wonders' onClick={()=>{wonder(setClass1,setClass2,setClass3,setLargerwrapperclass,setTitleclass,setProfileclass)}}>Click me to unleash the potential!</button>
+      <button className='wonders' onClick={()=>{wonder(setClass1,setClass2,setClass3,setLargerwrapperclass,setTitleclass,setProfileclass)}}>Click me!</button>
       <div className= {'larger-wrapper'+ largerwrapperclass}>
         <h1 className={'title'+titleclass}>Amos Goh's Portfolio</h1>
         <Navbar class1={class1} class2={class2} class3={class3}/>
