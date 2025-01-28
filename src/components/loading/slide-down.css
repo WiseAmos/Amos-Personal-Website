@@ -66,3 +66,18 @@
         top:-100vh;
     }
   }
+
+
+  @media only screen and (max-width: 600px) {
+        .cover h1{
+            opacity: 0;
+            position: absolute;
+            bottom: 10%;
+            right: 0;
+            margin: 5%;
+            font-size: 70px;
+            font-weight: 500;
+            color: rgb(0, 0, 0);   
+        }
+
+  }
