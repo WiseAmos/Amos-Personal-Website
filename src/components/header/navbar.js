@@ -16,7 +16,7 @@ function project_button(){
     transition("");
     setTimeout(() => {
       window.location.href = "projects"
-    }, 500);
+    }, 750);
   }, 400);
 }
 }

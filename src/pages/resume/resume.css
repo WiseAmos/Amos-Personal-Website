@@ -1,0 +1,50 @@
+.iframe-pdf{
+    border: 5px solid black;
+
+}
+.reviews-main-wrapper{
+    margin-bottom: 100px;
+    display: flex;
+    gap: 100px;
+}
+.reviews-arrow{
+    width: 50px;
+    cursor: pointer;
+}
+
+
+.title-top{
+    margin-top: 50px;
+    text-align: center;
+    font-family: "VT323", serif;
+}
+
+.second-title{
+    margin-top: 20px;
+}
+
+.resume-main{
+    background-color: rgb(255, 253, 247);
+    min-height: 100vh;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap:30px;
+}
+
+@media only screen and (max-width: 600px) {
+    .iframe-pdf{
+        width: 80vw;
+        min-height: 50vh;
+    }
+    .reviews-arrow{
+        width: 30px;
+        cursor: pointer;
+    }
+    .reviews-main-wrapper{
+        margin-bottom: 100px;
+        display: flex;
+        gap: 20px;
+    }
+}

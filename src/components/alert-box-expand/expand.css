@@ -1,9 +1,50 @@
+.projects-wrapper{
+    font-family: "VT323", serif;
+    font-style: normal;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    left: 0;
+    min-height: 100vh;  /* Minimum height */
+    max-height: fit-content;
+    width: 100vw;
+    background-color: rgb(255, 253, 247);
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.loading-slider{
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 100px;
+    padding: 100px;
+    justify-content: center;
+    align-content: center;
+}
+
+@keyframes pop {
+    0%{
+        scale: 0;
+    }
+    70%{
+        scale: 1.1;
+        opacity: 1;
+    }
+    100%{
+        scale: 1;
+        opacity: 1;
+    }
+  }
+
+
 
 
 .alert-box-project{
     opacity: 0;
-    animation: pop 0.5s ease calc(var(--i)*0.3s) forwards;
-    cursor: pointer;
+    animation: pop 0.5s ease calc(var(--i)*0.1s) forwards;
     position: relative;
     height: fit-content;
     background-color: white;
@@ -46,9 +87,11 @@
 .close-button-project{
     width: 30px;
     height: 30px;
+    cursor: pointer;
 }
 
 .alert-text-wrapper-project{
+    cursor: pointer;
     display: flex;
     gap: 20px;
     align-items: center;
@@ -63,4 +106,25 @@
 
 .body-text-project{
     font-weight: 200;
+}
+
+@media only screen and (max-width: 600px) {
+    .box-top-project{
+        padding-bottom: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 5px;
+        display: flex;
+        flex-direction: row;
+        background-color: black;
+        align-items: center;
+        gap: 20px;
+        justify-content: space-between;
+        width: 80vw;
+        height: fit-content;
+    }
+    .text-value-project{
+        margin-left: 20px;
+        width: 40vw;
+    }
 }

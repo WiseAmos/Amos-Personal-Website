@@ -69,13 +69,15 @@
 
 .alert-text-wrapper{
     display: flex;
-    gap: 20px;
+    gap: 40px;
     align-items: center;
+    justify-content:center;
+    width: 100%;
     margin-bottom: 10px;
 }
 
 @media only screen and (max-width: 600px) {
-    .box-top{
+        .box-top{
         padding-bottom: 10px;
         padding-left: 10px;
         padding-right: 10px;
@@ -88,5 +90,13 @@
         justify-content: space-between;
         width: 350px;
         height: fit-content;
+    }
+    .alert-text-wrapper{
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        justify-content:center;
+        width: 100%;
+        margin-bottom: 10px;
     }
 }

@@ -12,11 +12,11 @@
 
 
 .slide-down{
-    animation: slide-down 1s ease forwards;
+    animation: slide-down 0.75s ease forwards;
 }
 
 .slide-down-h1{
-    animation:text-animation 1s ease forwards;
+    animation:text-animation 0.75s ease forwards;
 }
 
 @keyframes text-animation {
