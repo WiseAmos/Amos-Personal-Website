@@ -51,6 +51,10 @@ function nextreview(direction){
 
 return(
     <div className='resume-main'>
+        <img className='back-icon' src='svg/back-arrow.svg' onClick={()=>{
+                    window.location = "/"
+                    sessionStorage.setItem("prev-page-status","return");
+                }}/>
         <h1 className='title-top'>Resume PDF (scroll down for more)</h1>
         <iframe className="iframe-pdf" src="pdf/amos.pdf" width='70%' height='800px'/>
         <h1 className='title-top second-title'>Testimony from teammates</h1>

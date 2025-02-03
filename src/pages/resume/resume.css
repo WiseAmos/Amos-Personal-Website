@@ -2,6 +2,19 @@
     border: 5px solid black;
 
 }
+
+.back-icon{
+    width: 55px;
+    height: 55px;
+    margin: 30px;
+    left: 0;
+    position: absolute;
+    cursor: pointer;
+}
+
+
+
+
 .reviews-main-wrapper{
     margin-bottom: 100px;
     display: flex;
@@ -46,5 +59,14 @@
         margin-bottom: 100px;
         display: flex;
         gap: 20px;
+    }
+    .back-icon{
+        width: 50px;
+        height: 50px;
+        margin: 20px;
+        left: 0;
+        position: absolute;
+        cursor: pointer;
+        animation: pop 0.5s ease forwards;
     }
 }
