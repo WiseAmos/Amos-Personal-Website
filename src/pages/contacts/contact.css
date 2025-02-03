@@ -1,0 +1,62 @@
+.icons{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.icons img{
+    width: 50px;
+    cursor: pointer;
+    transition: all ease 0.2s;
+    user-drag: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.icons img:hover{
+    scale:1.5;
+}
+
+.title-contact{
+    font-size: 40px;
+    font-family: "VT323", serif;
+}
+
+.main-wrapper{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.back-icon{
+    width: 55px;
+    height: 55px;
+    margin: 30px;
+    left: 0;
+    position: absolute;
+    cursor: pointer;
+}
+
+
+
+
+
+  @media only screen and (max-width: 600px) {
+    .back-icon{
+        width: 50px;
+        height: 50px;
+        margin: 20px;
+        left: 0;
+        position: absolute;
+        cursor: pointer;
+        animation: pop 0.5s ease forwards;
+    }
+  }

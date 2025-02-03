@@ -60,6 +60,8 @@
 .alert-icon-project{
     height: 200px;
     width: auto;
+    max-width: 110px;
+    object-fit: cover;
 }
 
 .box-top-project{

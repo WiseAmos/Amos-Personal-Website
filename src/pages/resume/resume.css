@@ -58,6 +58,7 @@
     .reviews-main-wrapper{
         margin-bottom: 100px;
         display: flex;
+
         gap: 20px;
     }
     .back-icon{
@@ -65,8 +66,12 @@
         height: 30px;
         margin: 10px;
         left: 0;
-        position: absolute;
         cursor: pointer;
         animation: pop 0.5s ease forwards;
+    }
+    .mobile-top-title{
+        margin-top: 100px;
+        text-align: center;
+        font-family: "VT323", serif;
     }
 }

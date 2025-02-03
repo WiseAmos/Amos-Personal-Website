@@ -1,20 +1,19 @@
 import './resume.css'   
 import React, {useState} from 'react';
 import Review from '../../components/reviews/reviews'
-import { ReverseSubtractEquation } from 'three';
 
 const reviews = [
     {
-        name:"Emmanuel Chang (teammate)",
-        description:'Amos is a really good student at ngee ann polytechnic',
-        image:'reviews/emmanuel.jpeg',
+        name: "Emmanuel Chang (Teammate)",
+        description: "Amos is an exceptionally skilled technical teammate with a deep understanding of cybersecurity and software development. His ability to rapidly grasp complex concepts and implement effective solutions makes him a valuable asset in any project. Working alongside him, I’ve seen firsthand how he combines technical expertise with problem-solving skills to develop innovative solutions that optimize both security and efficiency. His adaptability and willingness to explore new technologies make collaboration both productive and insightful.",
+        image: "reviews/emmanuel.jpeg",
     },
     {
-        name:"ian lim (teammate)",
-        description:'Amos is a really good student at ngee ann polytechnic',
-        image:'reviews/emmanuel.jpeg',
+        name: "Ian Lim (Teammate)",
+        description: "Amos is not only a technically proficient teammate but also a strong and inspiring leader. His ability to drive the team forward stems from his deep technical expertise in cybersecurity, software development, and system architecture, as well as his ability to keep everyone motivated. He ensures that the team stays focused and works cohesively by fostering a collaborative environment where every member's strengths are utilized effectively. His leadership qualities, coupled with his problem-solving mindset, make him an invaluable team player in both technical and strategic roles.",
+        image: "reviews/ian.jpeg",
     }
-]
+];
 
 
 
@@ -55,7 +54,7 @@ return(
                     window.location = "/"
                     sessionStorage.setItem("prev-page-status","return");
                 }}/>
-        <h1 className='title-top'>Resume PDF (scroll down for more)</h1>
+        <h1 className='title-top mobile-top-title'>Resume PDF (scroll down for more)</h1>
         <iframe className="iframe-pdf" src="pdf/amos.pdf" width='70%' height='800px'/>
         <h1 className='title-top second-title'>Testimony from teammates</h1>
         <div className='reviews-main-wrapper'>

@@ -6,6 +6,7 @@ import ReactDOM from "react-dom/client";
 import Projects from './pages/projects/projects.js';
 import Resume from './pages/resume/resume.js';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Contact from './pages/contacts/contact.js';
 
 const App = () => {
 
@@ -17,7 +18,7 @@ return(
     <Home /></div>} />
     <Route path='/projects' element={<Projects />}/>
     <Route path='/resume' element={<Resume />}/>
-    <Route path='/contact' element={<div><h1>projects</h1></div>}/>
+    <Route path='/contact' element={<Contact/>}/>
 </Routes>
     </BrowserRouter>)
 }

@@ -1,11 +1,12 @@
 .review-wrapper{
     padding: 20px;
+    align-items: center;
     display: flex;
     flex-direction: row;
     width: 50vw;
     gap: 30px;
     font-family: "VT323", serif;
-    background-color: rgb(254, 255, 238);
+    background-color: rgb(255, 255, 255);
     border: 5px solid rgb(0, 0, 0);
     animation: pop 0.7s ease-in forwards;
 }
