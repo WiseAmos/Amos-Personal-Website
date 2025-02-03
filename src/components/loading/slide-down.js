@@ -1,9 +1,9 @@
-import { useEffect } from "react";
+import React, { useLayoutEffect } from "react";
 import "./slide-down.css"
 
 const Slideup = ({title=""}) =>{
 
-    useEffect(() => { 
+    useLayoutEffect(() => { 
         var cover = document.getElementsByClassName("cover")[0];
         if(sessionStorage.getItem("prev-page-status")=="return"){
             cover.style.top = "0px";
