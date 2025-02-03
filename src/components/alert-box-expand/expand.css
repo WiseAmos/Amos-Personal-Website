@@ -1,0 +1,66 @@
+
+
+.alert-box-project{
+    opacity: 0;
+    animation: pop 0.5s ease calc(var(--i)*0.3s) forwards;
+    cursor: pointer;
+    position: relative;
+    height: fit-content;
+    background-color: white;
+    border: 2px solid black;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:20px;
+}
+
+
+.alert-icon-project{
+    height: 200px;
+    width: auto;
+}
+
+.box-top-project{
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    display: flex;
+    flex-direction: row;
+    background-color: black;
+    align-items: center;
+    gap: 20px;
+    justify-content: space-between;
+    width: 500px;
+    height: fit-content;
+}
+
+.alert-text-project{
+    padding: 0px;
+}
+.box-top-project h1{
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+}
+.close-button-project{
+    width: 30px;
+    height: 30px;
+}
+
+.alert-text-wrapper-project{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 10px;
+    color: black;
+}
+
+.text-value-project{
+    margin-left: 20px;
+    width: 300px;
+}
+
+.body-text-project{
+    font-weight: 200;
+}

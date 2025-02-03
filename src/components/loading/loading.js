@@ -36,6 +36,11 @@ function Loading(show){
             }, 200);
         }
         else{
+            
+            var alert = document.getElementsByClassName('alert-box')[0];
+            var done = document.getElementsByClassName("loading-wrapper")[0];
+            alert.style.display = 'block';
+                done.style.display = 'block';
             if (window.innerWidth<600){
                 spam(20);
             }
