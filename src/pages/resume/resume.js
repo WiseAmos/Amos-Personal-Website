@@ -12,6 +12,11 @@ const reviews = [
         name: "Ian Lim (Teammate)",
         description: "Amos is not only a technically proficient teammate but also a strong and inspiring leader. His ability to drive the team forward stems from his deep technical expertise in cybersecurity, software development, and system architecture, as well as his ability to keep everyone motivated. He ensures that the team stays focused and works cohesively by fostering a collaborative environment where every member's strengths are utilized effectively. His leadership qualities, coupled with his problem-solving mindset, make him an invaluable team player in both technical and strategic roles.",
         image: "reviews/ian.jpeg",
+    },
+    {
+        name: "Bryan Goh (Rizzer)",
+        description: "Amos is a hardworking teammate, during our WISP assignment, he was the one thing between me and going insane as he actually did the work! he is amazing to work with (pls get with him xin er).",
+        image: "reviews/bryan.jpeg",
     }
 ];
 
