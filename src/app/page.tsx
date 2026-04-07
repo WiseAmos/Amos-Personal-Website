@@ -3,6 +3,7 @@ import AiGuide from "@/components/AiGuide";
 import QuestTracker from "@/components/QuestTracker";
 import AbilityTree from "@/components/AbilityTree";
 import ProjectGrid from "@/components/ProjectGrid";
+import Resume from "@/components/Resume";
 import MobileHud from "@/components/MobileHud";
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
       <BootSequence />
       <AbilityTree />
       <ProjectGrid />
+      <Resume />
 
       <MobileHud />
     </main>

@@ -6,7 +6,8 @@ import { motion } from "framer-motion";
 const SECTIONS = [
   { id: "hero", label: "System Boot" },
   { id: "about", label: "Ability Tree" },
-  { id: "projects", label: "Data Fragments" }
+  { id: "projects", label: "Data Fragments" },
+  { id: "resume", label: "Dossier" }
 ];
 
 export default function QuestTracker() {

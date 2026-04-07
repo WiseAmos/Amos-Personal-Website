@@ -1,6 +1,6 @@
 "use client";
 
-import { User, Code, TerminalSquare } from "lucide-react";
+import { User, Code, TerminalSquare, FileText } from "lucide-react";
 
 export default function MobileHud() {
   const scrollTo = (id: string) => {
@@ -34,6 +34,14 @@ export default function MobileHud() {
       >
         <Code className="w-5 h-5" />
         <span className="text-[10px] font-mono uppercase">Quests</span>
+      </button>
+
+      <button 
+        onClick={() => scrollTo("resume")}
+        className="flex flex-col items-center gap-1 text-foreground/70 hover:text-accent transition-colors duration-200 focus:outline-none"
+      >
+        <FileText className="w-5 h-5" />
+        <span className="text-[10px] font-mono uppercase">Dossier</span>
       </button>
     </div>
   );
