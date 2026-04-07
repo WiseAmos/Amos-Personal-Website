@@ -16,8 +16,8 @@ const REVIEWS = [
     image: "/reviews/ian.jpeg",
   },
   {
-    name: "Bryan Goh (Rizzer)",
-    description: "Amos is a hardworking teammate, during our WISP assignment, he was the one thing between me and going insane as he actually did the work! he is amazing to work with (pls get with him xin er).",
+    name: "Bryan Goh (Frontend Developer)",
+    description: "Amos is an exceptionally hardworking and dedicated collaborator. During our WISP assignment, his relentless work ethic and technical execution were instrumental to the team's success. He consistently delivers high-quality code under pressure and is highly reliable when facing complex architectural challenges.",
     image: "/reviews/bryan.jpeg",
   }
 ];
@@ -34,7 +34,7 @@ export default function Resume() {
   };
 
   return (
-    <section id="resume" className="min-h-screen w-full flex flex-col items-center justify-center p-8 sm:p-16 snap-start relative bg-background border-t border-border">
+    <section id="resume" className="min-h-[100dvh] w-full flex flex-col items-center justify-center p-8 sm:p-16 snap-start relative bg-background border-t border-border">
       <div className="z-10 w-full max-w-5xl mx-auto flex flex-col gap-12">
         <div>
           <h2 className="text-3xl font-mono text-accent mb-2 uppercase tracking-wider">&gt; Squad_Comm_Logs</h2>

@@ -8,7 +8,7 @@ import MobileHud from "@/components/MobileHud";
 
 export default function Home() {
   return (
-    <main className="relative h-screen snap-y snap-mandatory overflow-y-auto overflow-x-hidden scroll-smooth custom-scrollbar bg-background text-foreground">
+    <main className="relative h-[100dvh] snap-y snap-mandatory overflow-y-auto overflow-x-hidden scroll-smooth custom-scrollbar bg-background text-foreground">
       <AiGuide />
       <QuestTracker />
       

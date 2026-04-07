@@ -5,7 +5,7 @@ import { TerminalSquare, AlertTriangle } from "lucide-react";
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen w-full flex flex-col items-center justify-center bg-background text-foreground bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] px-6 from-surface/50 via-background to-background relative overflow-hidden">
+    <div className="min-h-[100dvh] w-full flex flex-col items-center justify-center bg-background text-foreground bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] px-6 from-surface/50 via-background to-background relative overflow-hidden">
       
       {/* Glitch Overlay */}
       <div className="absolute inset-0 pointer-events-none z-0" style={{ backgroundImage: "linear-gradient(transparent 50%, rgba(0, 255, 0, 0.02) 50%)", backgroundSize: "100% 4px" }} />

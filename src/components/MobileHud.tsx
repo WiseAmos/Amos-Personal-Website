@@ -11,7 +11,13 @@ export default function MobileHud() {
   };
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 sm:hidden z-40 bg-surface/80 backdrop-blur-md border-t border-border px-4 py-3 flex justify-around items-center">
+    <div 
+      className="fixed bottom-0 left-0 right-0 sm:hidden z-40 bg-surface/80 backdrop-blur-md border-t border-border px-4 pt-3 flex justify-around items-center"
+      style={{ 
+        paddingBottom: "max(env(safe-area-inset-bottom), 12px)", 
+        transform: "translateZ(0)" 
+      }}
+    >
       <button 
         onClick={() => scrollTo("hero")}
         className="flex flex-col items-center gap-1 text-foreground/70 hover:text-accent transition-colors duration-200 focus:outline-none"

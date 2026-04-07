@@ -26,7 +26,7 @@ export default function BootSequence() {
   }, [currentIndex]);
 
   return (
-    <section className="h-screen w-full flex flex-col justify-end p-8 sm:p-16 pb-32 snap-start relative overflow-hidden bg-background">
+    <section className="h-[100dvh] w-full flex flex-col justify-end p-8 sm:p-16 pb-32 snap-start relative overflow-hidden bg-background">
       {/* Background ambient effect */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-surface/50 via-background to-background pointer-events-none"></div>
       
