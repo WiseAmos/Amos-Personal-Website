@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ExternalLink, Github } from "lucide-react";
-
+import { X, ExternalLink, Code } from "lucide-react";
 type Project = {
   id: string;
   title: string;
@@ -146,7 +145,7 @@ export default function ProjectGrid() {
                 <div className="flex gap-4 pt-4 border-t border-border mt-4">
                   {selectedProject.github && (
                     <a href={selectedProject.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-mono text-foreground hover:text-accent transition-colors">
-                      <Github className="w-4 h-4" /> Source Array
+                      <Code className="w-4 h-4" /> Source Array
                     </a>
                   )}
                   {selectedProject.link && (
